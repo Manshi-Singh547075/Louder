@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-obsidian text-silver antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom components */
+@layer components {
+  .card {
+    @apply bg-charcoal/80 backdrop-blur-sm border border-border/50 rounded-xl;
+  }
+  
+  .badge {
+    @apply px-3 py-1 rounded-full bg-slate/30 border border-border/50 text-xs font-mono;
+  }
+  
+  .btn-primary {
+    @apply bg-amber/90 hover:bg-amber text-obsidian font-medium rounded-lg 
+           transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
+           focus:outline-none focus:ring-2 focus:ring-amber/50 focus:ring-offset-2 
+           focus:ring-offset-obsidian;
+  }
+  
+  .btn-secondary {
+    @apply bg-slate/50 hover:bg-slate text-silver border border-border/50 
+           rounded-lg transition-all duration-200 disabled:opacity-50;
+  }
+  
+  .input-primary {
+    @apply bg-charcoal border border-border/50 rounded-lg px-4 py-2 
+           focus:outline-none focus:border-amber/50 focus:ring-1 focus:ring-amber/50
+           text-silver placeholder:text-muted;
+  }
+}
+
+/* Background grid pattern */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(245, 158, 11, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(245, 158, 11, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 158, 11, 0.05) 1px, transparent 1px);
+}
+
+/* Glow effect */
+.bg-amber-glow {
+  background: radial-gradient(circle at center, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+  filter: blur(60px);
+  opacity: 0.6;
+}
+
+.shadow-glow {
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.1);
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(39, 39, 42, 0.5);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(245, 158, 11, 0.4);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 158, 11, 0.6);
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245, 158, 11, 0.4) rgba(39, 39, 42, 0.5);
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease-out forwards;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Loading shimmer effect */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(39, 39, 42, 0) 0%,
+    rgba(39, 39, 42, 0.5) 50%,
+    rgba(39, 39, 42, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Text selection */
+::selection {
+  @apply bg-amber/30 text-silver;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid rgba(245, 158, 11, 0.5);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Gradient text utility */
+.text-gradient {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(17, 17, 21, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(39, 39, 42, 0.5);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent overflow on mobile */
+@media (max-width: 640px) {
+  .bg-grid-pattern {
+    background-size: 30px 30px;
+  }
+}
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  padding: 1px;
+  border-radius: 1rem;
+}
+
+.gradient-border > * {
+  background: var(--bg-obsidian);
+  border-radius: calc(1rem - 1px);
+}
+
+/* Text shadow for headings */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.text-shadow-glow {
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+/* Custom animations for loading states */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.4);
+}
+
+/* Gradient text for emphasis */
+.text-gradient-amber {
+  background: linear-gradient(135deg, #f59e0b 0%, #fcd34d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
