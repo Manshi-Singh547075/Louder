@@ -6,12 +6,6 @@ import suggestRouter from './routes/suggest.js';
 import historyRouter from './routes/history.js';
 
 dotenv.config();
-// Add this right after dotenv.config()
-console.log('Environment check:');
-console.log('MONGODB_URI exists:', !!process.env.MONGODB_URI);
-console.log('OPENAI_API_KEY exists:', !!process.env.OPENAI_API_KEY);
-console.log('OPENAI_API_KEY length:', process.env.OPENAI_API_KEY?.length || 0);
-console.log('OPENAI_API_KEY prefix:', process.env.OPENAI_API_KEY?.substring(0, 7) || 'none');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
